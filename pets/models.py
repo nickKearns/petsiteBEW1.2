@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.text import slugify
 # Create your models here.
 
 
@@ -13,6 +14,16 @@ class Pet(models.Model):
 
     def __str__(self):
         return self.pet_name
+
+
+
+    def save(self, *args, **kwargs):
+        """ Creates a URL safe slug automatically when a new a page is created. """
+        if not self.pk:
+            self.slug = slugify(self.title, allow_unicode=True)
+
+        # Call save on the superclass.
+        return super(Pet, self).save(*args, **kwargs)
 
 
 
