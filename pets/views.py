@@ -6,7 +6,7 @@ from django.template.defaultfilters import slugify
 
 
 def home(request):
-    return render(request, 'pets/home.html')
+    return render(request, 'home.html')
 
 class AppointmentListView(ListView):
     model = Appointment
