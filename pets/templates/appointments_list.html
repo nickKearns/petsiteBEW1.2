@@ -1,16 +1,37 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h3>Wikis {% if pages %}<small class="text-muted">({{ pages|length }} Page{{ pages|length|pluralize:"s" }})</small>{% endif %}</h3>
+  <h3>Appointments {% if appointments %}<small class="text-muted">({{ appointments|length }} Appointments{{ appointments|length|pluralize:"s" }})</small>{% endif %}</h3>
   <hr>
-  {% if pages %}
-    <div class="card-columns">
-      {% for page in pages %}
-        {% include "partials/card.html" %}
+  {% if appointments %}
+
+
+      {% for appointment in appointments %}
+        <p>Appointment for {{ appointment.pet.owner.username }}'s pet {{ appointment.pet.pet_name }}</p>
+
+
+      <ul>
+
+         
+        <li>
+        <p>{{ appointment.date_of_appointment }}</p>
+        </li>
+        <li>
+          <p>{{ appointment.duration_minutes }} Minutes</p>
+        </li>
+
+        <li>
+          {{ appointment.special_instructions }}
+        </li>
+       
+
+      </ul> 
       {% endfor %}
-    </div>
+
+        <a href="{% url 'appointment-create-view' %}" title='Appointment Create View'>Create a new appointment</a>
+
   {% else %}
-    <div class="alert alert-primary" role="alert">No pages to display.</div>
+    <div class="alert alert-primary" role="alert">No appointments to display.</div>
   {% endif %}
 {% endblock %}
 

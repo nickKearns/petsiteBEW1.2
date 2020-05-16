@@ -20,7 +20,7 @@ class Pet(models.Model):
     def save(self, *args, **kwargs):
         """ Creates a URL safe slug automatically when a new a page is created. """
         if not self.pk:
-            self.slug = slugify(self.title, allow_unicode=True)
+            self.slug = slugify(self.pet_name, allow_unicode=True)
 
         # Call save on the superclass.
         return super(Pet, self).save(*args, **kwargs)
@@ -39,5 +39,12 @@ class Appointment(models.Model):
         return 'appointment for ' + self.pet.pet_name
 
 
+    def save(self, *args, **kwargs):
+        """ Creates a URL safe slug automatically when a new a page is created. """
+        if not self.pk:
+            self.slug = slugify(self.special_instructions, allow_unicode=True)
+
+        # Call save on the superclass.
+        return super(Appointment, self).save(*args, **kwargs)
 
 

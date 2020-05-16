@@ -4,7 +4,21 @@
 {% block content %}
 
 
-<a href="{% url 'pets-list-view'  %}" title="Pet List">Pets List</a>
+    {% if request.user.is_authenticated %}
+
+        <ul>
+            <li>
+                <a href="{% url 'pets-list-view'  %}" title="Pet List">Pets List</a>
+            </li>
+            <li>
+                <a href="{% url 'appointments-list-view' %}" title="Appointments List"> Appointments List</a>
+            </li>
 
 
+        </ul>
+
+    {% else %}
+    <p>You must sign in to see appointments</p>
+
+    {% endif %}
 {% endblock %}
