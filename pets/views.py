@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from pets.models import Appointment, Pet
 from django.template.defaultfilters import slugify
+from django.contrib.auth.models import User
 # Create your views here.
 
 
@@ -26,11 +27,17 @@ class PetsListView(ListView):
     model = Pet
 
     def get(self, request):
-        pets = self.get_queryset().all()
+
+
+        user = self.request.user
+        
+
+        users_pets = Pet.objects.filter(owner=user)
+
 
 
         return render(request, 'pets_list.html', {
-            'pets': pets
+            'pets': users_pets
         })
 
 

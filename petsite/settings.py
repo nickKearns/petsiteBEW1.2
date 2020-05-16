@@ -75,6 +75,11 @@ TEMPLATES = [
 WSGI_APPLICATION = 'petsite.wsgi.application'
 
 
+
+# Where to redirect during authentication
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
+
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 

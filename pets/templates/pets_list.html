@@ -1,8 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+
+
   <h3>Pets {% if pets %}<small class="text-muted">({{ pets|length }} Pet{{ pets|length|pluralize:"s" }})</small>{% endif %}</h3>
   <hr>
+
+    {% if request.user.is_authenticated %}
+
+      
+
+    {% endif %}
+
+
   {% if pets %}
     <div class="card-columns">
       {% for pet in pets %}
@@ -12,6 +23,9 @@
   {% else %}
     <div class="alert alert-primary" role="alert">No Pets to display.</div>
   {% endif %}
+
+
+
 {% endblock %}
 
 
