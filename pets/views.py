@@ -99,9 +99,9 @@ class PetsListView(ListView):
 class PetDetailView(DetailView):
     model = Pet
 
-    def get(self, request, slug):
+    def get(self, request, pet_name):
 
-        pet = self.get_queryset().get(sluf__iexact=slug)
+        pet = self.get_queryset().get(pet_name=pet_name)
 
         return render(request, 'pet_detail.html', {
             'pet': pet,

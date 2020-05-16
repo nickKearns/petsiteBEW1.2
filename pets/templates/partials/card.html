@@ -2,7 +2,9 @@
 
 
 <div class="card mb-3">
-  <h5 class="card-header ">{{ pet.pet_name }}</h5>
+  <h5>
+  <a href="{% url 'pet-detail-view' pet.pet_name %}" title="pet detail page" class="card-header">{{ pet.pet_name }}</a>
+</h5>
   <div class="card-body border-dark">
     <p class="card-text text-dark">
       <ul>

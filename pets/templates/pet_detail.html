@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<ul>
+<li>Name: {{ pet.pet_name }}</li>
+<li>Species: {{ pet.speceies }}</li>
+<li>Breed: {{ pet.breed }}</li>
+<li>Owner: {{ pet.owner.username }}</li>
+<li>Weight: {{ pet.weight_in_pounds }}</li>
+
+
+</ul>
+
+
+{% endblock %}
